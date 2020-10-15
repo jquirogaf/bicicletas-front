@@ -83,6 +83,7 @@ export class AdvanceTableComponent implements OnInit {
       }
     });
   }
+
   editCall(row) {
     this.id = row.id;
     const dialogRef = this.dialog.open(FormDialogComponent, {

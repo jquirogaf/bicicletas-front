@@ -30,6 +30,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatMenuModule } from '@angular/material/menu';
 import { BicicletasComponent } from './bicicletas/bicicletas.component';
 import { PersonasComponent } from './personas/personas.component';
+import { FormPersonaDialogComponent } from './personas/dialogs/form-persona-dialog/form-persona-dialog.component';
+import { DeleteComponent } from './personas/dialogs/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PersonasComponent } from './personas/personas.component';
     FormDialogComponent,
     DeleteDialogComponent,
     BicicletasComponent,
-    PersonasComponent
+    PersonasComponent,
+    FormPersonaDialogComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,

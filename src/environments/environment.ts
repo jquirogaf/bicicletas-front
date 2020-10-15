@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  // urlBack: 'https://localhost:44347/api/'
-  urlBack: 'http://localhost:8888/services/geofrut/'
+  urlBack: 'https://localhost:44347/api/'
 };
 
 /*
