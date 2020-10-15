@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 
 import { PersonaService } from '../../persona.service'; // llamado al servico
-import { Persona } from '../../persona.model'; // llamado al modelo
+import { Persona, Persona } from '../../persona.model'; // llamado al modelo
 
 @Component({
   selector: 'app-form-persona-dialog',
@@ -23,6 +23,7 @@ export class FormPersonaDialogComponent {
   dialogTitle: string;
   personaForm: FormGroup;
   persona: Persona;
+  respuesta: any;
 
   constructor(
     public dialogRef: MatDialogRef<FormPersonaDialogComponent>,
@@ -73,6 +74,33 @@ export class FormPersonaDialogComponent {
     });
   }
 
+
+  /**
+   * Metodo para guardar la informacion
+   */
+  guardar(){
+    if (this.personaForm.valid){
+      const persona: Persona = {
+        name: this.personaForm.get('name').value,
+        lastname: this.personaForm.get('lastname').value,
+        address: this.personaForm.get('address').value,
+        phone: this.personaForm.get('phone').value,
+      };
+
+      console.log('valor a guardar de persona ', persona);
+      this.personaService.crearPersonaService(persona).subscribe(res => {
+        this.respuesta = res;
+        console.log('Persona guardada', this.respuesta);
+      }, error => {
+        console.log('Mesaje de error', error);
+      });
+    }
+  }
+
+
+  /**
+   * Metodo para cerra rmodal
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }
