@@ -1,9 +1,12 @@
+import { Bicicleta } from '../bicicletas/bicicleta.model';
+
 export interface Persona {
   id?: number;
   name?: string;
   lastname?: string;
   address?: string;
   phone?: string;
+  bicicletas?: Bicicleta[];
 }
 
 
@@ -14,6 +17,7 @@ export class Persona implements Persona {
     public lastname?: string,
     public address?: string,
     public phone?: string,
+    public bicicletas?: Bicicleta[],
   ){}
 
 }

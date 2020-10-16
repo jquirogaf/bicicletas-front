@@ -32,6 +32,8 @@ import { BicicletasComponent } from './bicicletas/bicicletas.component';
 import { PersonasComponent } from './personas/personas.component';
 import { FormPersonaDialogComponent } from './personas/dialogs/form-persona-dialog/form-persona-dialog.component';
 import { DeletePersonaComponent } from './personas/dialogs/delete/delete-persona.component';
+import { FormBicicletaDialogComponent } from './bicicletas/dialogs/form-bicicleta-dialog/form-bicicleta-dialog.component';
+import { DeleteBicicletaComponent } from './bicicletas/dialogs/delete-bicicleta/delete-bicicleta.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { DeletePersonaComponent } from './personas/dialogs/delete/delete-persona
     PersonasComponent,
     FormPersonaDialogComponent,
     DeletePersonaComponent,
+    FormBicicletaDialogComponent,
+    DeleteBicicletaComponent,
   ],
   imports: [
     CommonModule,
