@@ -14,6 +14,7 @@ import { DeleteDialogComponent } from './dialogs/delete/delete.component';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { SelectionModel } from '@angular/cdk/collections';
+import { ConvertPropertyBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 
 @Component({
   selector: 'app-advance-table',
@@ -93,6 +94,7 @@ export class AdvanceTableComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe((result) => {
+      console.log('valor de result', result);
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(

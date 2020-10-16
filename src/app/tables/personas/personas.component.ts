@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef, Inject } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,6 +24,7 @@ export class PersonasComponent implements OnInit {
   personaOrder: MatTableDataSource<Persona>; // para la tabla
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild('filter', { static: true }) filter: ElementRef;
 
   id: number;
   persona: Persona | null;
@@ -74,8 +75,6 @@ export class PersonasComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
-        // After dialog is closed we're doing frontend updates
-        // For add we're just pushing a new row inside DataService
         this.personaService.getDialogData();
 
         this.refreshTable();
@@ -89,10 +88,70 @@ export class PersonasComponent implements OnInit {
     });
   }
 
+
+  /**
+   * Metodo para Editar Persona
+   * @param row,
+   */
+  editCall(row) {
+    this.id = row.id;
+    const dialogRef = this.dialog.open(FormPersonaDialogComponent, {
+      data: {
+        persona: row,
+        action: 'edit'
+      }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 1) {
+        const foundIndex = this.personas.findIndex(x => x.id === this.id);
+
+        this.personas[foundIndex] = this.personaService.getDialogData();
+        this.refreshTable();
+        this.showNotification(
+          'black',
+          'Edit Record Successfully...!!!',
+          'bottom',
+          'center'
+        );
+      }
+    });
+  }
+
+
+  /**
+   * Metodo para eliminar persona
+   * @param row,
+   */
+  /*
+  deleteItem(row) {
+    this.id = row.id;
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: row
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 1) {
+        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
+          (x) => x.id === this.id
+        );
+        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        this.refreshTable();
+        this.showNotification(
+          'snackbar-danger',
+          'Delete Record Successfully...!!!',
+          'bottom',
+          'center'
+        );
+      }
+    });
+  }
+  */
+
 /**
  * Metodo para refrescar tabla
  */
   private refreshTable() {
+    this.ngOnInit();
+    // this.loadData();
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 

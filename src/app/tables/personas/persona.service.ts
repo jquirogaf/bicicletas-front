@@ -40,7 +40,7 @@ export class PersonaService {
    * @param persona,
    */
   crearPersonaService(persona: any): Observable<any> {
-    return this.http.post(this.url + 'Persona', persona);
+    return this.http.post(this.url + 's', persona, {observe: 'response'});
   }
 
 
@@ -49,7 +49,16 @@ export class PersonaService {
    * @param dataPersona,
    */
   actualizarPersonaService(dataPersona: any): Observable<any> {
-    return this.http.put<any>(this.url + 'Persona', dataPersona);
+    return this.http.put<any>(this.url + 'Persona/', dataPersona, {observe: 'response'});
+  }
+
+
+  /**
+   * Servicio eliminar perosna por id
+   * @param idPersona,
+   */
+  eliminarPersonaService(idPersona: any): Observable<any> {
+    return this.http.delete<any[]>(this.url + 'Persona' + idPersona,  {observe: 'response'});
   }
 
 
