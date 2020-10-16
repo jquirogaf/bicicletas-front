@@ -96,7 +96,7 @@
                                           <mat-icon aria-label="Edit" class="col-white">edit</mat-icon>
                                       </button>
                                       <button mat-icon-button color="accent" class="btn-tbl-delete"
-                                          (click)="$event.stopPropagation()" >
+                                          (click)="$event.stopPropagation()" (click)="deleteItem(row)">
                                           <mat-icon aria-label="Delete" class="col-white">delete</mat-icon>
                                       </button>
                                   </mat-cell>

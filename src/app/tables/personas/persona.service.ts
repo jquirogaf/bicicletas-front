@@ -40,7 +40,7 @@ export class PersonaService {
    * @param persona,
    */
   crearPersonaService(persona: any): Observable<any> {
-    return this.http.post(this.url + 's', persona, {observe: 'response'});
+    return this.http.post(this.url + 'Persona', persona, {observe: 'response'});
   }
 
 
@@ -58,7 +58,7 @@ export class PersonaService {
    * @param idPersona,
    */
   eliminarPersonaService(idPersona: any): Observable<any> {
-    return this.http.delete<any[]>(this.url + 'Persona' + idPersona,  {observe: 'response'});
+    return this.http.delete<any[]>(this.url + 'Persona/' + idPersona,  {observe: 'response'});
   }
 
 

@@ -11,6 +11,7 @@ import { PersonaService } from './persona.service'; // llamado al servico
 import { Persona } from './persona.model'; // llamado al modelo
 
 import { FormPersonaDialogComponent } from './dialogs/form-persona-dialog/form-persona-dialog.component';
+import { DeletePersonaComponent } from './dialogs/delete/delete-persona.component';
 
 @Component({
   selector: 'app-personas',
@@ -122,18 +123,16 @@ export class PersonasComponent implements OnInit {
    * Metodo para eliminar persona
    * @param row,
    */
-  /*
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(DeletePersonaComponent, {
       data: row
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-          (x) => x.id === this.id
-        );
-        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        const foundIndex = this.personas.findIndex(x => x.id === this.id);
+        this.personas[foundIndex] = this.personaService.getDialogData();
+
         this.refreshTable();
         this.showNotification(
           'snackbar-danger',
@@ -144,7 +143,6 @@ export class PersonasComponent implements OnInit {
       }
     });
   }
-  */
 
 /**
  * Metodo para refrescar tabla

@@ -31,7 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BicicletasComponent } from './bicicletas/bicicletas.component';
 import { PersonasComponent } from './personas/personas.component';
 import { FormPersonaDialogComponent } from './personas/dialogs/form-persona-dialog/form-persona-dialog.component';
-import { DeleteComponent } from './personas/dialogs/delete/delete.component';
+import { DeletePersonaComponent } from './personas/dialogs/delete/delete-persona.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { DeleteComponent } from './personas/dialogs/delete/delete.component';
     BicicletasComponent,
     PersonasComponent,
     FormPersonaDialogComponent,
-    DeleteComponent
+    DeletePersonaComponent,
   ],
   imports: [
     CommonModule,
