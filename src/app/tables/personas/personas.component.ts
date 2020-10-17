@@ -65,7 +65,7 @@ export class PersonasComponent implements OnInit {
 
 
   /**
-   * Metodo para crear
+   * Metodo para crear Persona
    */
   addNew() {
     const dialogRef = this.dialog.open(FormPersonaDialogComponent, {
@@ -148,8 +148,6 @@ export class PersonasComponent implements OnInit {
  * Metodo para refrescar tabla
  */
   private refreshTable() {
-    this.ngOnInit();
-    // this.loadData();
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 

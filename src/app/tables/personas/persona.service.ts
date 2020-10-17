@@ -31,7 +31,7 @@ export class PersonaService {
    * Servicio Obtener perosna por id
    * @param idPersona,
    */
-  getUsuarioByIdService(idPersona: any): Observable<any> {
+  getPersonaByIdService(idPersona: any): Observable<any> {
     return this.http.get<any[]>(this.url + 'Persona' + idPersona,  {observe: 'response'});
   }
 
