@@ -16,9 +16,16 @@ export class DeletePersonaComponent  {
   ) { }
 
 
+  /**
+   * Metodo para cerar modal
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  /**
+   * Metodo confirmar elmiminar perosna
+   */
   confirmDelete(): void {
     console.log('VALOR DE LA DATA', this.data);
     const personaId = this.data.id;

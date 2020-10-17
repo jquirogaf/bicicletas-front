@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { BicicletaService } from './bicicleta.service'; // llamado al servico
 import { Bicicleta } from './bicicleta.model'; // llamado al modelo
+import { PersonaService } from './../personas/persona.service'; // llamado al servico
+import { Persona } from './../personas/persona.model'; // llamado al modelo
 
 import { FormBicicletaDialogComponent } from './dialogs/form-bicicleta-dialog/form-bicicleta-dialog.component';
 import { DeleteBicicletaComponent } from './dialogs/delete-bicicleta/delete-bicicleta.component';
@@ -23,6 +25,7 @@ export class BicicletasComponent implements OnInit {
 
 
   bicicletas: Bicicleta[];
+  personas: Persona[];
   displayedColumns: string[] = ['id', 'modelo', 'color', 'latitude', 'longitud', 'persona', 'actions'];
   bicicletaOrder: MatTableDataSource<Bicicleta>; // para la tabla
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -40,9 +43,12 @@ export class BicicletasComponent implements OnInit {
 
   constructor(
     private bicicletaService: BicicletaService,
+    private personaService: PersonaService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) { }
+  ) {
+    this.loadPersonas();
+  }
 
   ngOnInit(): void {
     this.loadData();
@@ -66,6 +72,17 @@ export class BicicletasComponent implements OnInit {
     });
   }
 
+  /**
+   * Metodo para mostrar todas las personas
+   */
+  loadPersonas(){
+    this.personaService.getAllPersonaService().subscribe(res => {
+      this.personas = res.body;
+      console.log('Lista de personas', this.personas);
+    }, error => {
+      console.log('Mesaje de error', error);
+    });
+  }
 
   /**
    * Metodo para crear Bicicleta
