@@ -27,7 +27,7 @@ export class DeleteBicicletaComponent {
   confirmDelete(): void {
     console.log('VALOR DE LA DATA', this.data);
     const bicicletaId = this.data.id;
-    this.bicicletaService.eliminarPersonaService(bicicletaId).subscribe(res => {
+    this.bicicletaService.eliminarBicicletaService(bicicletaId).subscribe(res => {
       console.log('Borrado', res.status);
     }, error => {
       console.log('Mesaje de error', error);

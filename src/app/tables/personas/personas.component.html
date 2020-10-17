@@ -56,12 +56,6 @@
                           </div>
                           <mat-table #table [dataSource]="personaOrder" matSort class="mat-cell">
 
-                              <!-- ID Column -->
-                              <ng-container matColumnDef="id">
-                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-                                  <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
-                              </ng-container>
-
                               <ng-container matColumnDef="name">
                                   <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
                                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">

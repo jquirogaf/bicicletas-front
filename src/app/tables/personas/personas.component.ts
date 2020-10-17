@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, TemplateRef, Inject } from '@
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,7 +21,7 @@ import { DeletePersonaComponent } from './dialogs/delete/delete-persona.componen
 export class PersonasComponent implements OnInit {
 
   personas: Persona[];
-  displayedColumns: string[] = ['id', 'name', 'lastname', 'address', 'phone', 'actions'];
+  displayedColumns: string[] = ['name', 'lastname', 'address', 'phone', 'actions'];
   personaOrder: MatTableDataSource<Persona>; // para la tabla
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -56,6 +56,10 @@ export class PersonasComponent implements OnInit {
 
       this.personaOrder = new MatTableDataSource(this.personas); // para filtro busqueda
       this.personaOrder.sort = this.sort;
+      const sortState: Sort = {active: 'id', direction: 'desc'};
+      this.sort.active = sortState.active;
+      this.sort.direction = sortState.direction;
+      this.sort.sortChange.emit(sortState);
       this.personaOrder.paginator = this.paginator;
 
     }, error => {

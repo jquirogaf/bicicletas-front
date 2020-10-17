@@ -28,7 +28,7 @@ export class FormPersonaDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<FormPersonaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public personaService: PersonaService,
+    private personaService: PersonaService,
     private fb: FormBuilder
   ) {
 
@@ -56,7 +56,6 @@ export class FormPersonaDialogComponent {
   }
 
 
-
   /**
    * Metodo para crear el formulario
    */
@@ -81,42 +80,47 @@ export class FormPersonaDialogComponent {
     if (this.personaForm.valid){
       console.log('hhhhhhhh', this.action);
       if (this.action === 'add'){
-
-        const newPersona: Persona = {
-          name: this.personaForm.get('name').value,
-          lastname: this.personaForm.get('lastname').value,
-          address: this.personaForm.get('address').value,
-          phone: this.personaForm.get('phone').value,
-        };
-        console.log('valor a guardar de persona ', newPersona);
-
-        this.personaService.crearPersonaService(newPersona).subscribe(res => {
-          this.respuesta = res;
-          console.log('Persona guardada', this.respuesta);
-        }, error => {
-          console.log('Mesaje de error', error);
-        });
+        this.guardar();
       } else if (this.action === 'edit'){
-
-        const editPersona: Persona = {
-          id: this.persona.id,
-          name: this.personaForm.get('name').value,
-          lastname: this.personaForm.get('lastname').value,
-          address: this.personaForm.get('address').value,
-          phone: this.personaForm.get('phone').value,
-        };
-        console.log('valor a actualixar de persona ', editPersona);
-
-        this.personaService.actualizarPersonaService(editPersona).subscribe(res => {
-          this.respuesta = res;
-          console.log('Persona Actualizar', this.respuesta);
-        }, error => {
-          console.log('Mesaje de error', error);
-        });
+        this.actualizar();
       }
     }
   }
 
+  guardar(){
+    const newPersona: Persona = {
+      name: this.personaForm.get('name').value,
+      lastname: this.personaForm.get('lastname').value,
+      address: this.personaForm.get('address').value,
+      phone: this.personaForm.get('phone').value,
+    };
+    console.log('valor a guardar de persona ', newPersona);
+
+    this.personaService.crearPersonaService(newPersona).subscribe(res => {
+      this.respuesta = res;
+      console.log('Persona guardada', this.respuesta);
+    }, error => {
+      console.log('Mesaje de error', error);
+    });
+  }
+
+  actualizar(){
+    const editPersona: Persona = {
+      id: this.persona.id,
+      name: this.personaForm.get('name').value,
+      lastname: this.personaForm.get('lastname').value,
+      address: this.personaForm.get('address').value,
+      phone: this.personaForm.get('phone').value,
+    };
+    console.log('valor a actualizar de persona ', editPersona);
+
+    this.personaService.actualizarPersonaService(editPersona).subscribe(res => {
+      this.respuesta = res;
+      console.log('Persona Actualizar', this.respuesta);
+    }, error => {
+      console.log('Mesaje de error', error);
+    });
+  }
 
 
   /**

@@ -56,12 +56,6 @@
                           </div>
                           <mat-table #table [dataSource]="bicicletaOrder" matSort class="mat-cell">
 
-                              <!-- ID Column -->
-                              <ng-container matColumnDef="id">
-                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-                                  <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
-                              </ng-container>
-
                               <ng-container matColumnDef="modelo">
                                   <mat-header-cell *matHeaderCellDef mat-sort-header>Modelo</mat-header-cell>
                                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
@@ -75,7 +69,7 @@
                               </ng-container>
 
                               <ng-container matColumnDef="latitude">
-                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Latitude</mat-header-cell>
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Latitud</mat-header-cell>
                                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
                                       {{row.latitude}}</mat-cell>
                               </ng-container>

@@ -49,7 +49,7 @@ export class BicicletaService {
    * Servicio para actualizar Bicicleta
    * @param dataBicicleta,
    */
-  actualizarPersonaService(dataBicicleta: any): Observable<any> {
+  actualizarBicicletaService(dataBicicleta: any): Observable<any> {
     return this.http.put<any>(this.url + 'Bicicletas/', dataBicicleta, {observe: 'response'});
   }
 
@@ -58,7 +58,7 @@ export class BicicletaService {
    * Servicio eliminar Bicileta por id
    * @param idBicicleta,
    */
-  eliminarPersonaService(idBicicleta: any): Observable<any> {
+  eliminarBicicletaService(idBicicleta: any): Observable<any> {
     return this.http.delete<any[]>(this.url + 'Bicicletas/' + idBicicleta,  {observe: 'response'});
   }
 
